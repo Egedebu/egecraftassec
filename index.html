@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Screen Image Redirect</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background: black;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <img id="fullImage" src="https://i.ibb.co/mr47QBKK/Bir-ba-l-k-ekleyin.png" alt="Full Screen Image">
+    <script>
+        const img = document.getElementById('fullImage');
+
+        // Resim tamamen yüklendiğinde çalışacak
+        img.onload = function() {
+            // 4 saniye bekleyip yönlendirme
+            setTimeout(function() {
+                window.location.href = "https://www.google.com";
+            }, 4000);
+        };
+
+        // Hızlı yükleme için tarayıcı önbellek kontrolü
+        if (img.complete) {
+            img.onload(); // Eğer resim zaten yüklüyse onload tetiklenir
+        }
+    </script>
+</body>
+</html>
